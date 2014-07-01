@@ -61,3 +61,10 @@ let e3v  = eval e3 env;;
 let mine = Prim("min", CstI 2, CstI 3);;
 let minv = eval mine env;;
 printfn "%A" minv;;
+
+(* b = 10, c = 2, eval min(b, 1==c) *)
+let env2 = [("b", 10); ("c", 2)];;
+let equalc = Prim("==", CstI 1, Var "c");;
+let complex_expression = Prim("min", Var "b", equalc);;
+let eval_complex_expression = eval complex_expression env2;;
+printfn "%A" eval_complex_expression;;
